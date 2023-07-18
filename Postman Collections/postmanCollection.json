@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "2db2d17a-1820-4025-942f-747f9fefe259",
+		"name": "MonolithToMicroservicesExample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener productos",
+			"_postman_id": "4215c7fe-e533-4218-8697-53b1da4b935a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{API_GATEWAY_IP}}/products"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un producto",
+			"_postman_id": "deff9108-bf7c-4afd-ba60-f2ac96e2b138",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{API_GATEWAY_IP}}/products/123"
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar una compra",
+			"_postman_id": "ec0e5a03-3d28-4661-a432-fdcce4d11328",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"123\", \"321\", \"111\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{API_GATEWAY_IP}}/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Ver estado de envío",
+			"_postman_id": "8e98792b-7761-4b2c-b2aa-2a0650eebc01",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{API_GATEWAY_IP}}/shipping/c"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "166819dd-569e-4cd1-a54c-7a450aa1997a"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				],
+				"id": "c98628b0-a66f-449f-a196-4520de1a2d86"
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "fbc43daa-10dc-4885-b360-7c67fbc5ebac",
+			"key": "API_GATEWAY_IP",
+			"value": "172.17.0.4",
+			"type": "string"
+		}
+	]
+}
