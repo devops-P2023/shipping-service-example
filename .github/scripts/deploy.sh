@@ -11,7 +11,7 @@ kubectl get nodes
 kubectl run $APP --image=$IMAGE -l app=$APP
 
 ## Exponer el pod usando un Service del tipo LoadBalancer. De esta forma, se crea un ALB directamente en AWS.
-kubectl expose pod $APP --port=80  --name=svc-product-service --type=LoadBalancer
+kubectl expose pod $APP --port=80  --name=svc-shipping-service --type=LoadBalancer
 
  ## Podemos validar que se haya creado el service y obtener la url del balanceador
 kubectl get svc
