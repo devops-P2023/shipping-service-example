@@ -46,6 +46,24 @@ jobs:
         docker build . -f ./Dockerfile --tag $USERNAME/$SERVICE_NAME:$TIME_STAMP
         docker image push $USERNAME/$SERVICE_NAME:$TIME_STAMP
         docker run -d $USERNAME/$SERVICE_NAME:$TIME_STAMP
+        docker pull devopsp23/shipping-service:$TIME_STAMP
+      # docker pull $USERNAME/$SERVICE_NAME
+        
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID_DEV}}
+        aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY_DEV}}
+        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+        aws-region: ${{secrets.AWS_DEFAULT_REGION}}
+
+    - name: EKS Deploy
+      run: ./.github/scripts/deploy.sh
+      shell: bash
+      env:
+        AWS_CLUSTER_NAME: ${{ secrets.AWS_CLUSTER_NAME }}
+        IMAGE: "${{ secrets.DOCKERHUB_USERNAME }}/${{vars.SERVICE_NAME}}:${{ steps.date.outputs.date }}"
+        APP: ${{vars.SERVICE_NAME}}
        
 
  
